@@ -37,13 +37,13 @@ contract EcommerceStore {
         productIndex = 0;
     }
 
-    function addProductToStore(uint _id, string _name, string _category, string _imageLink, 
+    function addProductToStore(string _name, string _category, string _imageLink, 
                                 string _descLink, uint _auctionStartTime, uint _auctionEndTime, 
                                 uint _startPrice, uint _productCondition) public 
     {
         require(_auctionStartTime < _auctionEndTime);
         productIndex += 1;
-        Product memory product = Product(_id, _name, _category, _imageLink,
+        Product memory product = Product(productIndex, _name, _category, _imageLink,
                                  _descLink, _auctionStartTime, _auctionEndTime, _startPrice, 
                                  0, 0, 0, 0, ProductStatus.Open, ProductCondition(_productCondition));
         stores[msg.sender][productIndex] = product;
