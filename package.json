@@ -1,0 +1,25 @@
+{
+  "name": "vinyl",
+  "version": "1.0.0",
+  "description": "A decentralized marketplace for Vinyl records.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surayashivji/VinylMarketplace.git"
+  },
+  "author": "Suraya Shivji",
+  "license": "MIT",
+  "devDependencies": {
+    "ethereumjs-util": "5.1.2"
+  },
+  "bugs": {
+    "url": "https://github.com/surayashivji/VinylMarketplace/issues"
+  },
+  "homepage": "https://github.com/surayashivji/VinylMarketplace"
+}

@@ -68,9 +68,9 @@ contract EcommerceStore {
     }
 
     // user can bid an amount on any given record
-    // in order to generate a sealed bid (can't see bid amount), user must call the keccak256 function
-    // *pass amount user is bidding and the secret string into the keccak256 hashing function*
-    // keccak256("10.5" + "secretstring").toString('hex') => c2f8990ee5acd17d421d22647f20834cc37e20d0ef11087e85774bccaf782737
+    // in order to generate a sealed bid (can't see bid amount), user must call the sha3 function
+    // *pass amount user is bidding and the secret string into the sha3 hashing function*
+    // sha3("10.5" + "secretstring").toString('hex') => c2f8990ee5acd17d421d22647f20834cc37e20d0ef11087e85774bccaf782737
     // @param productId: product ID, bid: encrypted bid string
     function bid(uint _productId, bytes32 _bid) payable public returns (bool) {
         Product storage product = stores[productIdInStore[_productId]][_productId];
@@ -85,11 +85,11 @@ contract EcommerceStore {
     }
 
     // revealing tells the contract how much the user bid (actual amount is initially encrypted)
-    // uses keccak256 algorithm to ccheck that bid amt + secret generates same hash as in bids mapping
+    // uses sha3 algorithm to ccheck that bid amt + secret generates same hash as in bids mapping
     function revealBid(uint _productId, string _amount, string _secret) public {
         Product storage product = stores[productIdInStore[_productId]][_productId];
         require (now > product.auctionEndTime);
-        bytes32 sealedBid = keccak256(_amount, _secret);
+        bytes32 sealedBid = sha3(_amount, _secret);
 
         Bid memory bidInfo = product.bids[msg.sender][sealedBid];
         require (bidInfo.bidder > 0);
