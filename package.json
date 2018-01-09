@@ -16,7 +16,8 @@
   "author": "Suraya Shivji",
   "license": "MIT",
   "devDependencies": {
-    "ethereumjs-util": "5.1.2"
+    "ethereumjs-util": "5.1.2",
+    "ipfs-api": "14.1.2"
   },
   "bugs": {
     "url": "https://github.com/surayashivji/VinylMarketplace/issues"
